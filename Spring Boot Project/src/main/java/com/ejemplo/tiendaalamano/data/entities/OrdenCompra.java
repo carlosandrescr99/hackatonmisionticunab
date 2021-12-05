@@ -54,7 +54,7 @@ public class OrdenCompra implements Serializable{
 
     @ManyToOne
     @JoinColumn(name = "cliente_Id")
-    private ClienteEntityl clienteEntityl;
+    private ClienteEntity clienteEntityl;
 
     @ManyToOne
     @JoinColumn(name = "domiciliario_Id")

@@ -4,48 +4,40 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-@Entity(name="direcciones")
+@Entity
+@Table (name="direcciones")
 public class DireccionEntity implements Serializable{    
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column
+    @Column(name="id_direccion")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idDireccion;
+    private Integer id_direccion;
 
-    @Column(nullable = false)
-    private long idCliente;
-
-    @Column(nullable = false, length = 50)
+    @Column(name="direccion")
     private String direccion;
 
-    @Column(nullable = false, length = 15)
+    @Column(name="estado")
     private String estado;
 
-    @ManyToOne
-    @JoinColumn(name = "cliente_Id")
-    private ClienteEntityl clienteModel;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", nullable = false)
+    private ClienteEntity clienteModel;
 
-    public long getIdDireccion() {
-        return idDireccion;
+    public Integer getId_direccion() {
+        return id_direccion;
     }
 
-    public void setIdDireccion(long idDireccion) {
-        this.idDireccion = idDireccion;
-    }
-
-    public long getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(long idCliente) {
-        this.idCliente = idCliente;
+    public void setId_direccion(Integer id_direccion) {
+        this.id_direccion = id_direccion;
     }
 
     public String getDireccion() {
@@ -63,6 +55,9 @@ public class DireccionEntity implements Serializable{
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
     
+
     
+
 }

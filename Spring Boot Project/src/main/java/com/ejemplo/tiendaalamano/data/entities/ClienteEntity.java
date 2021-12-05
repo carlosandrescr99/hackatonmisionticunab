@@ -1,70 +1,57 @@
 package com.ejemplo.tiendaalamano.data.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 
-import javax.persistence.CascadeType;
+//import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Index;
-import javax.persistence.OneToMany;
+//import javax.persistence.Index;
+//import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity(name = "clientes")
-
-
-@Table(indexes = {
-    
-    @Index(columnList = "idCliente", name = "index_idcliente", unique = true),
-    @Index(columnList = "nombre", name = "index_nombre", unique = true),
-})
-
-
-
-public class ClienteEntityl implements Serializable{
-
+@Entity
+@Table(name = "clientes")
+public class ClienteEntity implements Serializable{
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column
+    @Column(name="id_cliente")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idCliente;
+    private Integer id_cliente;
 
-    @Column(nullable = false, length = 15)
+    @Column(name="username")
     private String username;
 
-    @Column(nullable = false, length = 15)
+    @Column(name="pass")
     private String pass;
 
-    @Column(nullable = false, length = 50)
+    @Column(name="nombre")
     private String nombre;
 
-    @Column(nullable = false, length = 15)
+    @Column(name="documento")
     private String documento;
 
-    @Column(nullable = false)
-    private int idDireccion;
+    @Column(name="id_direccion")
+    private Integer id_direccion;
 
-    @Column(nullable = false, length = 15)
+    @Column(name="telefono")
     private String telefono;
 
-    @Column(nullable = false, length = 10)
+    @Column(name="estado")
     private String estado;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "clienteModel")
-    private List<DireccionEntity> direccionModelList = new ArrayList<>();
-
     
-    public long getIdCliente() {
-        return idCliente;
+    
+    public Integer getId_cliente() {
+        return id_cliente;
     }
 
-    public void setIdCliente(long idCliente) {
-        this.idCliente = idCliente;
+    public void setId_cliente(Integer id_cliente) {
+        this.id_cliente = id_cliente;
     }
 
     public String getUsername() {
@@ -99,12 +86,12 @@ public class ClienteEntityl implements Serializable{
         this.documento = documento;
     }
 
-    public int getIdDireccion() {
-        return idDireccion;
+    public Integer getId_direccion() {
+        return id_direccion;
     }
 
-    public void setIdDireccion(int idDireccion) {
-        this.idDireccion = idDireccion;
+    public void setId_direccion(Integer id_direccion) {
+        this.id_direccion = id_direccion;
     }
 
     public String getTelefono() {
